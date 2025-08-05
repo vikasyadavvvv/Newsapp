@@ -20,4 +20,24 @@ A full-stack application that fetches news from external APIs, stores them in Mo
 - **Database**: MongoDB
 
 
+## Setup
+## .env
+```
+MONGO_URI=
+MEDIASTACK_API_KEY=
 
+```
+
+```
+git clone https://github.com/vikasyadavvvv/Newsapp.git
+cd news-app
+
+cd backend
+npm init -y
+npm install
+nodemon index.js
+
+cd..
+cd frontend
+npm install
+npm run dev
