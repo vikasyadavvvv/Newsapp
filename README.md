@@ -6,8 +6,6 @@ A full-stack application that fetches news from external APIs, stores them in Mo
 
 ## LIVE : https://newsappfrontend-ten.vercel.app/
 
-) <!-- Replac
-
 ## Features
 - Fetches news from NewsAPI
 - Stores articles in MongoDB
@@ -24,6 +22,12 @@ A full-stack application that fetches news from external APIs, stores them in Mo
 - **Frontend**: React + Tailwind CSS
 - **Backend**: Node.js + Express
 - **Database**: MongoDB
+- **Deploy**:Vercel
+
+##If you want to run locally change the url in App.jsx
+```
+http://localhost:5000
+```
 
 
 ## Setup
