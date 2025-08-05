@@ -24,7 +24,7 @@ A full-stack application that fetches news from external APIs, stores them in Mo
 - **Database**: MongoDB
 - **Deploy**:Vercel
 
-##If you want to run locally change the url in App.jsx
+## If you want to run locally change the url in App.jsx
 ```
 http://localhost:5000
 ```
