@@ -1,4 +1,4 @@
-# News Aggregator App
+# News App
 
 A full-stack application that fetches news from external APIs, stores them in MongoDB, and displays them on a React frontend.
 
