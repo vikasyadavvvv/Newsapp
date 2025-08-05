@@ -24,7 +24,7 @@ A full-stack application that fetches news from external APIs, stores them in Mo
 ## .env
 ```
 MONGO_URI=
-MEDIASTACK_API_KEY=
+NEWS_API_KEY=
 
 ```
 
