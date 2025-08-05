@@ -50,7 +50,7 @@ A full-stack application that fetches, stores, and displays news articles from v
 
 ### Deployment
 - Frontend: Vercel
-- Backend: To be deployed (Render/AWS/Heroku)
+- Backend: Vercel
 - Database: MongoDB Atlas
 
 ## Getting Started
