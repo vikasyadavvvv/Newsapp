@@ -16,8 +16,8 @@ function App() {
   useEffect(() => {
   const fetchNews = async () => {
     try {
-      const latest = await axios.get("http://localhost:5000/api/news/latest");
-      const all = await axios.get("http://localhost:5000/api/news");
+      const latest = await axios.get("https://newsappbackend-lake.vercel.app/api/news/latest");
+      const all = await axios.get("https://newsappbackend-lake.vercel.app/api/news");
 
       // Sort by publishedAt (descending)
       const sortedLatest = latest.data.sort(
@@ -49,7 +49,7 @@ function App() {
 
     setSearching(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/news/search?query=${query}`);
+      const res = await axios.get(`https://newsappbackend-lake.vercel.app/api/news/search?query=${query}`);
       setSearchResults(res.data);
     } catch (err) {
       console.error("Search error:", err.message);
