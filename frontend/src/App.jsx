@@ -20,8 +20,8 @@ function App() {
         setLoading(true);
         
         const [latestResponse, allResponse] = await Promise.all([
-          axios.get("http://localhost:5000/api/news/latest"),
-          axios.get("http://localhost:5000/api/news")
+          axios.get("https://newsapp-theta-sandy.vercel.app/api/news/latest"),
+          axios.get("https://newsapp-theta-sandy.vercel.app/api/news")
         ]);
 
         const latestArticles = Array.isArray(latestResponse.data) 
@@ -67,7 +67,7 @@ function App() {
     setError(null);
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/news/search?query=${encodeURIComponent(query)}`
+        `https://newsapp-theta-sandy.vercel.app/news/search?query=${encodeURIComponent(query)}`
       );
       setSearchResults(Array.isArray(res.data) ? res.data : res.data?.articles || []);
     } catch (err) {
