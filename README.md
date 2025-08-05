@@ -1,53 +1,89 @@
-# News App
+# News Aggregator App
 
-A full-stack application that fetches news from external APIs, stores them in MongoDB, and displays them on a React frontend.
+A full-stack application that fetches, stores, and displays news articles from various sources.
 
-![News App Screenshot](<img width="1877" height="950" alt="image" src="https://github.com/user-attachments/assets/aa370375-0c2f-4b92-8712-83135dd438ac" />  <img width="1872" height="587" alt="image" src="https://github.com/user-attachments/assets/538c16a2-94d5-42ca-ba38-21261baec42f" />
+![News App Screenshot](https://github.com/user-attachments/assets/aa370375-0c2f-4b92-8712-83135dd438ac)
+![News App Mobile View](https://github.com/user-attachments/assets/538c16a2-94d5-42ca-ba38-21261baec42f)
 
-## LIVE : https://newsappfrontend-ten.vercel.app/
+## Live Demo
+🔗 [https://newsappfrontend-ten.vercel.app/](https://newsappfrontend-ten.vercel.app/)
 
 ## Features
-- Fetches news from NewsAPI
-- Stores articles in MongoDB
-- Backend API endpoints for:
-  - All articles
-  - Latest articles
-  - Search functionality
-- Frontend with:
-  - Hero section for latest articles
-  - Responsive grid for all articles
-  - Search functionality
+
+### Core Functionality
+- Real-time news fetching from NewsAPI
+- MongoDB storage for persistent article data
+- Comprehensive API endpoints for data access
+
+### Backend Features
+- RESTful API built with Node.js and Express
+- Endpoints for:
+  - `/api/articles` - Get all articles
+  - `/api/articles/latest` - Get latest articles
+  - `/api/articles/search` - Search articles by keyword
+- Automatic data refresh mechanism
+
+### Frontend Features
+- Modern React interface with Tailwind CSS
+- Responsive design for all device sizes
+- Interactive components:
+  - Hero section showcasing latest news
+  - Article grid with hover effects
+  - Powerful search functionality
+  - Loading states and error handling
 
 ## Tech Stack
-- **Frontend**: React + Tailwind CSS
-- **Backend**: Node.js + Express
-- **Database**: MongoDB
-- **Deploy**:Vercel
 
-## If you want to run locally change the url in App.jsx
-```
-http://localhost:5000
-```
+### Frontend
+- React.js (Vite)
+- Tailwind CSS
+- Axios for API calls
+- React Icons
+
+### Backend
+- Node.js
+- Express.js
+- Mongoose (MongoDB ODM)
+
+### Database
+- MongoDB Atlas (Cloud Database)
+
+### Deployment
+- Frontend: Vercel
+- Backend: To be deployed (Render/AWS/Heroku)
+- Database: MongoDB Atlas
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm or yarn
+- MongoDB Atlas account (or local MongoDB instance)
+- NewsAPI key (free tier available)
 
 
-## Setup
-## .env
-```
-MONGO_URI=
-NEWS_API_KEY=
+### Installation
 
-```
 
-```
+1. Clone the repository:
+```bash
 git clone https://github.com/vikasyadavvvv/Newsapp.git
-cd news-app
-
+cd Newsapp
 cd backend
-npm init -y
 npm install
-nodemon index.js
+cd ../frontend
+npm install
+```bash
+git clone https://github.com/vikasyadavvvv/Newsapp.git
+cd Newsapp
+```
 
-cd..
-cd frontend
-npm install
-npm run dev
+2. Create .env file in backend directory:
+```bash
+MONGO_URI=your_mongodb_connection_string
+NEWS_API_KEY=your_newsapi_key
+PORT=5000
+```
+3. For local development, update the API base URL in frontend/src/App.jsx: "https://newsapp-theta-sandy.vercel.app" to  "http://localhost:5000" Everywhere
+
+
