@@ -71,6 +71,7 @@ git clone https://github.com/vikasyadavvvv/Newsapp.git
 cd Newsapp
 cd backend
 npm install
+nodemon index.js
 cd ../frontend
 npm install
 npm run dev
