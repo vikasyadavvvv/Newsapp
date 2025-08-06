@@ -73,9 +73,7 @@ cd backend
 npm install
 cd ../frontend
 npm install
-```bash
-git clone https://github.com/vikasyadavvvv/Newsapp.git
-cd Newsapp
+npm run dev
 ```
 
 2. Create .env file in backend directory:
