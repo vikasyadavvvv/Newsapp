@@ -21,6 +21,30 @@ const HeroSection = ({ articles }) => {
       <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent mb-8">
         Top Headlines
       </h1>
+      
+        <div className="flex justify-center items-center mt-8 gap-4">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className="p-2 rounded-full bg-amber-600/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 hover:bg-amber-600/20 dark:hover:bg-amber-400/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          aria-label="Previous page"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        
+        <span className="text-sm font-medium text-amber-600 dark:text-amber-400">
+          Page {currentPage} of {totalPages}
+        </span>
+        
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="p-2 rounded-full bg-amber-600/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 hover:bg-amber-600/20 dark:hover:bg-amber-400/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          aria-label="Next page"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {paginatedArticles.map((article, idx) => (
@@ -76,29 +100,7 @@ const HeroSection = ({ articles }) => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center items-center mt-8 gap-4">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="p-2 rounded-full bg-amber-600/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 hover:bg-amber-600/20 dark:hover:bg-amber-400/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          aria-label="Previous page"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        
-        <span className="text-sm font-medium text-amber-600 dark:text-amber-400">
-          Page {currentPage} of {totalPages}
-        </span>
-        
-        <button
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="p-2 rounded-full bg-amber-600/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 hover:bg-amber-600/20 dark:hover:bg-amber-400/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          aria-label="Next page"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
+    
     </section>
   );
 };
