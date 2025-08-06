@@ -23,56 +23,65 @@ const HeroSection = ({ articles }) => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginatedArticles.map((article, idx) => (
-          <div
-            key={idx}
-            className="bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 border border-amber-100 dark:border-amber-500/20"
-          >
-            {article.urlToImage && (
-              <div className="relative pt-[56.25%] overflow-hidden">
-                <img
-                  src={article.urlToImage}
-                  alt={article.title || "News image"}
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            )}
-
-            <div className="p-5 flex flex-col justify-between h-full">
-              <div>
-                <h2 className="text-lg font-semibold text-gray-800 dark:text-amber-50 line-clamp-2">
-                  {article.title || "No title available"}
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-amber-100/80 mt-2 line-clamp-3">
-                  {article.description || "No description available."}
-                </p>
-                {article.publishedAt && (
-                  <p className="text-xs text-amber-600 dark:text-amber-400/80 mt-3 flex items-center">
-                    <span className="mr-1">🗓</span>
-                    {formatDate(article.publishedAt)}
-                  </p>
-                )}
-              </div>
-
-              {article.url ? (
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500/90 dark:hover:bg-amber-600 px-4 py-2 rounded-lg transition duration-200 group"
-                >
-                  Read more
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-              ) : (
-                <div className="mt-4 text-sm italic text-gray-500 dark:text-gray-400">
-                  No link available
+        {paginatedArticles.map((article, idx) =>
+          article.url ? (
+            <a
+              key={idx}
+              href={article.url}
+              target="_blank"
+              rel="noreferrer"
+              className="block bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 border border-amber-100 dark:border-amber-500/20"
+            >
+              {article.urlToImage && (
+                <div className="relative pt-[56.25%] overflow-hidden">
+                  <img
+                    src={article.urlToImage}
+                    alt={article.title || "News image"}
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
               )}
+
+              <div className="p-5 flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-800 dark:text-amber-50 line-clamp-2">
+                    {article.title || "No title available"}
+                  </h2>
+                  <p className="text-sm text-gray-600 dark:text-amber-100/80 mt-2 line-clamp-3">
+                    {article.description || "No description available."}
+                  </p>
+                  {article.publishedAt && (
+                    <p className="text-xs text-amber-600 dark:text-amber-400/80 mt-3 flex items-center">
+                      <span className="mr-1">🗓</span>
+                      {formatDate(article.publishedAt)}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500/90 dark:hover:bg-amber-600 px-4 py-2 rounded-lg transition duration-200 group w-fit">
+                  Read more
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </a>
+          ) : (
+            <div
+              key={idx}
+              className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden border border-amber-100 dark:border-amber-500/20 p-5"
+            >
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-amber-50">
+                {article.title || "No title available"}
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-amber-100/80 mt-2">
+                {article.description || "No description available."}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 italic">
+                No link available
+              </p>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       {/* Pagination Controls */}
