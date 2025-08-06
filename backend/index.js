@@ -26,7 +26,8 @@ mongoose.connect(MONGO_URI, {
 // ✅ Fetch and store articles from NewsAPI
 app.get("/api/fetch-news", async (req, res) => {
   try {
-const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=${NEWS_API_KEY}`;    console.log("Fetching news from:", apiUrl);
+const apiUrl = `https://newsapi.org/v2/everything?q=crime AND india&language=en&sortBy=publishedAt&pageSize=50&apiKey=${NEWS_API_KEY}`;
+ console.log("Fetching news from:", apiUrl);
 
     const response = await axios.get(apiUrl);
     console.log("Raw API response:", response.data); // Debug log
