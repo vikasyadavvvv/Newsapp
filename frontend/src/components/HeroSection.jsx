@@ -47,12 +47,13 @@ const HeroSection = ({ articles }) => {
                 <p className="text-sm text-gray-600 dark:text-amber-100/80 mt-2 line-clamp-3">
                   {article.description}
                 </p>
-                {article.publishedAt && (
-                  <p className="text-xs text-amber-600 dark:text-amber-400/80 mt-3 flex items-center">
-                    <span className="mr-1">🗓</span>
-                    {formatDate(a.publishedAt)}
-                  </p>
-                )}
+               {article.publishedAt && (
+                 <p className="text-xs text-amber-600 dark:text-amber-400/80 mt-3 flex items-center">
+                  <span className="mr-1">🗓</span>
+                   {formatDate(article.publishedAt)}
+                    </p>
+               )}
+
               </div>
 
               <a
