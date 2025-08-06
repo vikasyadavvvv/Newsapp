@@ -40,8 +40,9 @@ function App() {
           (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
         );
 
-        setLatestNews(sortedLatest);
-        setOlderNews(sortedAll.slice(31));
+       setLatestNews(sortedAll.slice(0, 30)); // First 30 for HeroSection
+       setOlderNews(sortedAll.slice(30));    // Remaining 16 for CarouselSection
+
       } catch (err) {
         console.error("Error fetching news:", {
           message: err.message,
@@ -138,7 +139,7 @@ function App() {
             </>
           ) : (
             <>
-              <HeroSection articles={latestNews.slice(0, 31)} />
+              <HeroSection articles={latestNews} />
               <CarouselSection 
                 articles={olderNews} 
                 title={
