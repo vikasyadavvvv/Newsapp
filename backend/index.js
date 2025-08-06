@@ -106,21 +106,27 @@ app.get("/api/news/latest", async (req, res) => {
 // Search news by title or description
 app.get("/api/news/search", async (req, res) => {
   try {
-    const { query } = req.query;
+    const { query, page = 1, limit = 10 } = req.query;
     if (!query || query.trim() === "") {
       return res.status(400).json({ message: "Search query is required" });
     }
 
+    const searchText = query.trim();
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
     const results = await News.find({
       $or: [
-        { title: { $regex: query, $options: "i" } },
-        { description: { $regex: query, $options: "i" } },
-      ]
-    }).sort({ publishedAt: -1 });
+        { title: { $regex: searchText, $options: "i" } },
+        { description: { $regex: searchText, $options: "i" } },
+      ],
+    })
+      .sort({ publishedAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
 
     res.json({
       count: results.length,
-      articles: results
+      articles: results,
     });
   } catch (error) {
     res.status(500).json({ error: "Search failed" });

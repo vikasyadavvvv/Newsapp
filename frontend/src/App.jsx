@@ -56,27 +56,29 @@ function App() {
     fetchNews();
   }, []);
 
-  const handleSearch = async (query) => {
-    if (!query.trim()) {
-      setSearchResults([]);
-      setSearching(false);
-      return;
-    }
+ const handleSearch = async (query) => {
+  if (!query.trim()) {
+    setSearchResults([]);
+    setSearching(false);
+    return;
+  }
 
-    setSearching(true);
-    setError(null);
-    try {
-      const res = await axios.get(
-        `https://newsapp-theta-sandy.vercel.app/news/search?query=${encodeURIComponent(query)}`
-      );
-      setSearchResults(Array.isArray(res.data) ? res.data : res.data?.articles || []);
-    } catch (err) {
-      console.error("Search error:", err.message);
-      setError("Search failed. Please try again.");
-    } finally {
-      setSearching(false);
-    }
-  };
+  setSearching(true);
+  setError(null);
+  try {
+    const res = await axios.get(
+      `https://newsapp-theta-sandy.vercel.app/api/news/search?query=${encodeURIComponent(query)}`
+    );
+    
+    // Adjusting the response parsing based on your backend structure
+    setSearchResults(res.data?.articles || []);
+  } catch (err) {
+    console.error("Search error:", err.message);
+    setError("Search failed. Please try again.");
+  } finally {
+    setSearching(false);
+  }
+};
 
   return (
     <div className="dark">
