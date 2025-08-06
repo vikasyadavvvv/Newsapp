@@ -23,12 +23,12 @@ const HeroSection = ({ articles }) => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginatedArticles.map((article, idx) => (
+        {paginatedArticles.map((article, idx) => ( 
           <div
             key={idx}
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 border border-amber-100 dark:border-amber-500/20"
           >
-            {a.urlToImage && (
+            {article.urlToImage && (
               <div className="relative pt-[56.25%] overflow-hidden">
                 <img
                   src={article.urlToImage}
