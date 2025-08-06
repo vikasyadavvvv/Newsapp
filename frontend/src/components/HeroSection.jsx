@@ -55,19 +55,15 @@ const HeroSection = ({ articles }) => {
                 )}
               </div>
 
-              {article.url ? (
-                <button
-                  onClick={() => window.open(article.url, "_blank", "noopener,noreferrer")}
-                  className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500/90 dark:hover:bg-amber-600 px-4 py-2 rounded-lg transition duration-200 group w-fit"
-                >
-                  Read more
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              ) : (
-                <div className="mt-4 text-sm italic text-gray-500 dark:text-gray-400">
-                  No link available
-                </div>
-              )}
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500/90 dark:hover:bg-amber-600 px-4 py-2 rounded-lg transition duration-200 group"
+                 >
+                 Read more
+               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+               </a>
             </div>
           </div>
         ))}
