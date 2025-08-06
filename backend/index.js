@@ -23,6 +23,12 @@ mongoose.connect(MONGO_URI, {
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB connection error:", err));
 
+
+  app.get('/',async (req,res)=>{
+    res.send(`API IS RUNNING `)
+    console.log("API IS RUNNING")
+  })
+
 // ✅ Fetch and store articles from NewsAPI
 app.get("/api/fetch-news", async (req, res) => {
   try {
