@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { ExternalLink } from "lucide-react";
 
 const HeroSection = ({ articles }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 6;
+
+  const totalPages = Math.ceil(articles.length / articlesPerPage);
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     const date = new Date(dateString);
     return isNaN(date) ? "" : date.toLocaleDateString(undefined, options);
   };
+
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const paginatedArticles = articles.slice(startIndex, startIndex + articlesPerPage);
 
   return (
     <section className="py-8 px-4 sm:px-6 lg:px-8 bg-amber-50/30 dark:bg-black transition-colors duration-300">
@@ -15,7 +23,7 @@ const HeroSection = ({ articles }) => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map((a, idx) => (
+        {paginatedArticles.map((a, idx) => (
           <div
             key={idx}
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 border border-amber-100 dark:border-amber-500/20"
@@ -60,10 +68,32 @@ const HeroSection = ({ articles }) => {
           </div>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center items-center mt-8 gap-4">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className="px-4 py-2 rounded-lg text-sm font-medium bg-amber-700 text-white disabled:opacity-50"
+        >
+          ← Prev
+        </button>
+        <span className="text-amber-400 text-sm">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 rounded-lg text-sm font-medium bg-amber-700 text-white disabled:opacity-50"
+        >
+          Next →
+        </button>
+      </div>
     </section>
   );
 };
 
 export default HeroSection;
+
 
 
